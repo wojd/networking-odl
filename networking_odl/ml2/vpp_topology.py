@@ -101,13 +101,13 @@ class VppNetworkTopologyParser(network_topology.NetworkTopologyParser):
 
 class VppNetworkTopologyElement(network_topology.NetworkTopologyElement):
 
-    devname = None
-    remote_ip = None  # it can be None or a string
-    has_datapath_type_netdev = False  # it can be False or True
-    support_vhost_user = False  # it can be False or True
+    devname = None  # Filled in by parser
+    remote_ip = None  # Filled in by parser
+    has_datapath_type_netdev = False  # Placeholder for future capability
+    support_vhost_user = False  # VPP supports it by default actually.
 
     # location for vhostuser sockets.
-    # TODO (wdec): This should be configurable in the config probably.
+    # TODO (wdec): This should be configurable in the ML2 config.
     vhostuser_socket_dir = '/tmp/'
 
     # TODO (wdec): And also this should be configurable...
