@@ -44,7 +44,6 @@ class VppNetworkTopologyParser(network_topology.NetworkTopologyParser):
                 'network-topology']['topology']:
             if topology['topology-id'].startswith('topology-netconf'):
                 for node in topology['node']:
-                    # expected url format: ovsdb://uuid/<uuid>[/<path>]]
                     # expected :
                     # "node-id": "name",
                     # "netconf-node-topology:host": "172.21.174.41"
@@ -189,7 +188,7 @@ class VppNetworkTopologyElement(network_topology.NetworkTopologyElement):
 
             vif_details.update({
                 portbindings.VHOST_USER_MODE:
-                portbindings.VHOST_USER_MODE_CLIENT,
+                portbindings.VHOST_USER_MODE_SERVER,
                 #portbindings.VHOST_USER_OVS_PLUG: True,
                 portbindings.VHOST_USER_SOCKET: socket_path
             })
