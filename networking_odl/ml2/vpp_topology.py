@@ -177,19 +177,19 @@ class VppNetworkTopologyElement(network_topology.NetworkTopologyElement):
 
         network_type = segment[driver_api.NETWORK_TYPE]
         return network_type in [constants.TYPE_LOCAL, constants.TYPE_GRE,
-                                constants.TYPE_VXLAN, constants.TYPE_VLAN]
+                                constants.TYPE_VXLAN, constants.TYPE_VLAN,
+                                constants.TYPE_FLAT]
 
     def _get_vif_details(self, vif_details, port_context_id, vif_type):
         vif_details = dict(vif_details)
         if vif_type == portbindings.VIF_TYPE_VHOST_USER:
             socket_path = os.path.join(
                 self.vhostuser_socket_dir,
-                (self.port_prefix + port_context_id)) #Why the splice? [:14])
+                (self.port_prefix + port_context_id))
 
             vif_details.update({
                 portbindings.VHOST_USER_MODE:
                 portbindings.VHOST_USER_MODE_SERVER,
-                #portbindings.VHOST_USER_OVS_PLUG: True,
                 portbindings.VHOST_USER_SOCKET: socket_path
             })
         return vif_details
